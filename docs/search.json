@@ -62,28 +62,28 @@
     "href": "about.html",
     "title": "About Me",
     "section": "",
-    "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects"
+    "text": "Image of Brooke Seeley"
   },
   {
     "objectID": "about.html#background",
     "href": "about.html#background",
     "title": "About Me",
-    "section": "",
-    "text": "Write a brief introduction about yourself here. Include:\n\nYour academic background\nYour interest in data science\nYour career goals\nAny relevant experience or projects"
+    "section": "Background",
+    "text": "Background\nI am a full-time student at Brigham Young University with a 3.84 GPA. I am a Heritage Scholarship recipient at BYU and a 4-year Hispanic Scholarship Fund Scholar. I graduate in April 2026 and will be beginning work in May as a Technical Solutions Engineer at Epic.\nI have completed various courses in Mathematics and Statistics as I work toward my degree in Applied Statistics & Analytics. I also took a course in Computer Science (learning Python) and am currently completing multiple online industry courses and certifications (SQL, more Python, Tableau, AWS, Microsoft Azure).\nI was the Brigham Young University Statistics Association Secretary for the 2024-2025 school year. I currently serve as a Teaching Assistant for the BYU Statistics Department and as a Grader for the BYU Mathematics Department. I also volunteer with BYU Football in the Recruiting Department. In my classes and as a volunteer, I have completed various projects related to data science and analysis, which can be viewed on this portfolio or on my GitHub (link below).\nThank you for your interest! Please contact me if you would like more information!"
   },
   {
     "objectID": "about.html#education",
     "href": "about.html#education",
     "title": "About Me",
     "section": "Education",
-    "text": "Education\n\n[Your Degree] - [University Name], [Year]\nRelevant Coursework: Statistics, Data Analysis, Programming, etc."
+    "text": "Education\n\nBachelor’s In Statistics - Applied Statistics and Analytics - Brigham Young University, April 2026\nRelevant Coursework:\n\nAnalysis of Correlated Data\nApplications in Biostatistics\nApplied R Programming\nCalculus I & II\nElementary & Computational Linear Algebra\nData Science Ecosystems & Process\nHow to Program (Python)\nIndustry Micro-Certifications in Data Science and AI\nMethods of Survey Sampling\nPredictive Analytics\nPrinciples of Statistics\nProbability and Inference I & II\nStatistical Modeling I & II\nTechnical Communication"
   },
   {
     "objectID": "about.html#skills-interests",
     "href": "about.html#skills-interests",
     "title": "About Me",
     "section": "Skills & Interests",
-    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python\nData Analysis: Pandas, NumPy\nVisualization: Matplotlib, Seaborn\nMachine Learning: Scikit-learn\nTools: Jupyter Notebooks, Git/GitHub\n\n\n\nAreas of Interest\n\n[Your specific interests, e.g., environmental data, healthcare analytics, finance, etc.]\n[Other areas you’re curious about]"
+    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python, R, SQL, Linux\nData Analysis: Pandas, NumPy, Predictive Modeling & Analytics, Linear Regression, ANOVA\nVisualization: Matplotlib, Seaborn, ggplot, Tableau\nMachine Learning: Scikit-learn, AWS, Microsoft Azure\nTools: Jupyter Notebooks, Git/GitHub\n\n\n\nAreas of Interest\n\nHealthcare\nSports Analytics\nPredictive Modeling"
   },
   {
     "objectID": "about.html#goals",
@@ -97,7 +97,7 @@
     "href": "about.html#contact",
     "title": "About Me",
     "section": "Contact",
-    "text": "Contact\n\nEmail: your.email@example.com\nGitHub: github.com/your-username\nLinkedIn: linkedin.com/in/your-profile\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
+    "text": "Contact\n\nEmail: brookeseeleyaz@gmail.com\nGitHub: github.com/brooke-seeley\nLinkedIn: linkedin.com/in/brooke-seeley\nKaggle: kaggle.com/brookeseeley\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
   },
   {
     "objectID": "projects/data-acquisition.html",
@@ -118,5 +118,19 @@
     "crumbs": [
       "Final Project"
     ]
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About Me",
+    "section": "Experience",
+    "text": "Experience\n\nTechnical Solutions Engineer - Epic - Beginning May 2026\nRecruiting Volunteer - BYU Football - Aug 2025-Present\nTeaching Assistant - BYU Statistics Department - Aug 2024-Present\nLinear Algebra Grader - BYU Mathematics Department - Dec 2024-Present\nExecutive Secretary - BYU Statistics Association - Apr 2024-Apr 2025"
+  },
+  {
+    "objectID": "about.html#hobbies",
+    "href": "about.html#hobbies",
+    "title": "About Me",
+    "section": "Hobbies",
+    "text": "Hobbies\n\nMusic\nDancing\nGaming\nYouTube"
   }
 ]
