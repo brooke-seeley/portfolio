@@ -1,11 +1,132 @@
 ---
 title: "Data Acquisition Project"
-author: "Your Name"
-date: "2025-01-01"
+author: "Brooke Seeley"
+date: "2026-03-11"
 format:
   html:
     code-fold: true
     toc: true
 ---
 
-This is coming down the pipeline. Check again later.
+In this blog, I discuss how I scraped and cleaned a data table containing the current BYU Football roster. Links to the data and to a GitHub repository containing my work can be found within the blog.
+
+# Why This Data?
+
+I am a huge fan of BYU Football, and always have been. This year, I had the privilege of volunteering with the team and completed some analysis and prediction projects for them. However, the most difficult part of the process was data collection. I did not know how to use webscraping, but had heard of it from members of the team.
+
+![Me on the field before a game](football-image.JPG)
+
+I am currently working on a new project for them, and feel that webscraping could be helpful in optimizing the process. I decided to start by trying webscraping techniques on the team's current roster. I already collected data on BYU players in the NFL, so perhaps I could compare some of the current rosters' stats to those players. I also have data on many of these players from when they were high school recruits, so I could find some interesting comparisons there as well.
+
+## Good Webscraping Practice
+
+To determine if it was ethical to scrape this page, I checked the [robots.txt](https://byucougars.com/robots.txt) file for the BYU Athletics website, which stated that scraping all pages was allowed. It is important to check the wishes of the site owners before scraping data from their site.
+
+# How I Acquired the Data
+
+To scrape and clean this data, I used the packages `requests`, `BeautifulSoup`, and `pandas`. I began by assigning the [url](https://byucougars.com/sports/football/roster) to a variable. I then used `requests.get()` on that url before running `BeautifulSoup` on its text.
+
+I took a look at the output of `.prettify()`, and noticed some things about the classes for different parts of the table. While most of the columns were available in a `<td>` tag, the Name column was a different story. Since the names were each links to the players' own pages, I had to call a more specific class and use its `<th>` tag. Other than that, it was quite easy to build the dataset.
+
+I used an empty dictionary, then created a function to parse through each row and appended the text for each variable to the dictionary. I then ran that function on the soup output (I used `soup.find_all('tr')` since that was the tag all of the rows were contained in) before converting it to a pandas dataframe.
+
+# Cleaning the Data
+
+Here was what my data table initially looked like:
+
++------+----------+------------------------+---------------+------------+------------+--------------+----------------------+------------------------------+
+|      | **\      | **Name**               | **Position**  | **Height** | **Weight** | **Class**    | **Hometown**         | **Previous**                 |
+|      | Number** |                        |               |            |            |              |                      |                              |
++=====:+=========:+=======================:+==============:+===========:+===========:+=============:+=====================:+=============================:+
+| 0    | 0        | Evan Johnson           | Cornerback    | 6-0        | 185 lbs    | RS-Senior    | Monterey, California | Stevenson High School        |
++------+----------+------------------------+---------------+------------+------------+--------------+----------------------+------------------------------+
+| 1    | 0        | Tei Nacua              | Wide Receiver | 6-2        | 185 lbs    | RS-Sophomore | Provo, Utah          | Timpview High School         |
++------+----------+------------------------+---------------+------------+------------+--------------+----------------------+------------------------------+
+| 2    | 1        | Therrian Alexander III | Cornerback    | 6-2        | 175 lbs    | Junior       | Ellenwood, Georgia   | Southwest Dekalb High School |
++------+----------+------------------------+---------------+------------+------------+--------------+----------------------+------------------------------+
+| 3    | 2        | Jonathan Kabeya        | Cornerback    | 5-10       | 180 lbs    | RS-Sophomore | Euless, Texas        | Byron Nelson High School     |
++------+----------+------------------------+---------------+------------+------------+--------------+----------------------+------------------------------+
+| 4    | 2        | Roger Saleapaga II     | Tight End     | 6-4        | 235 lbs    | Junior       | Orem, Utah           | Oregon                       |
++------+----------+------------------------+---------------+------------+------------+--------------+----------------------+------------------------------+
+
+: Original Dataset
+
+Looking at this, I considered a few changes I could make to create an easier-to-analyze dataset:
+
+-   Convert `Height` to inches (for all of my data collection for the team, I collected height in this format)
+
+-   Strip "lbs" from `Weight` (so it can be numeric and easier to analyze)
+
+-   Split `Class` into two variables (can better see trends in this way)
+
+    -   `Class` for Freshman, Sophomore, etc.
+
+    -   `RS` for whether or not they Redshirted
+
+-   Split `Hometown` into `City` and `State` (could look at trends across states, see how many cities within a state, etc.)
+
+-   Reorder columns
+
+Here are some explanations for how I changed the above variables.
+
+## Height
+
+I created a function that split the `Height` entries on the "-" that distinguished feet and inches. It then multiplied the feet number by 12, and added the inches to that. It left me with an integer of inches for each player.
+
+## Weight
+
+Here, I just replaced " lbs" with "" and then converted the number into an integer. Very simple!
+
+## Class -\> Class and RS
+
+First, to create the `RS` variable, I used the `str.startswith()` function to assign `Yes` to values that started with "RS -", and `No` to those that didn't.
+
+Then, to simplify the `Class` variable, I replaced "RS -" with "", just like I did for the `Weight` variable above.
+
+## Hometown -\> City and State
+
+This was very simple, I just split on the comma in each entry, essentially creating tuples on columns, then stripped the whitespace on both `City` and `State`. I then dropped the original `Hometown` variable.
+
+## Reordered Columns
+
+Finally, I reordered the columns so they were in a similar order as the original dataset. This was what the first few rows of my final dataset looked like:
+
+|   | Number | Name | Position | Height | Weight | Class | RS | City | State | Previous |
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| 0 | 0 | Evan Johnson | Cornerback | 72 | 185 | Senior | Yes | Monterey | California | Stevenson High School |
+| 1 | 0 | Tei Nacua | Wide Receiver | 74 | 185 | Sophomore | Yes | Provo | Utah | Timpview High School |
+| 2 | 1 | Therrian Alexander III | Cornerback | 74 | 175 | Junior | No | Ellenwood | Georgia | Southwest Dekalb High School |
+| 3 | 2 | Jonathan Kabeya | Cornerback | 70 | 180 | Sophomore | Yes | Euless | Texas | Byron Nelson High School |
+| 4 | 2 | Roger Saleapaga II | Tight End | 76 | 235 | Junior | No | Orem | Utah | Oregon |
+
+: Final Dataset
+
+# Final Dataset Information
+
+My final dataset contains 114 rows and 10 features, which are:
+
+1.  **Number**: The player's jersey number
+
+2.  **Name**: The player's full name
+
+3.  **Position**: The player's position
+
+4.  **Height**: The player's height (in)
+
+5.  **Weight**: The player's weight (lbs)
+
+6.  **Class**: The player's class (Freshman-Senior)
+
+7.  **RS**: The player's Redshirt status (Yes or No)
+
+8.  **City**: The player's home city
+
+9.  **State**: The player's home state
+
+10. **Previous**: The player's previous school
+
+There are definitely more things I could do to further clean this dataset for analysis. For example, I could split on first and last name and convert the position to its common abbreviation, since that is how my other datasets for the team are set up.
+
+# Further Resources
+
+Check out this [link](https://github.com/brooke-seeley/data-acquisition-project) to see my GitHub repo for this code, including a `.csv` of the final dataset, and this [link](https://github.com/brooke-seeley/Football) to see my repo with other work for the BYU Football team. Hope you enjoy!

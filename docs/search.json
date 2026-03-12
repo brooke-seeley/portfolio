@@ -104,7 +104,7 @@
     "href": "projects/data-acquisition.html",
     "title": "Data Acquisition Project",
     "section": "",
-    "text": "This is coming down the pipeline. Check again later.",
+    "text": "In this blog, I discuss how I scraped and cleaned a data table containing the current BYU Football roster. Links to the data and to a GitHub repository containing my work can be found within the blog.",
     "crumbs": [
       "Data Acquisition Project"
     ]
@@ -195,5 +195,65 @@
     "title": "Tutorial Blog - Cleaning and Predicting from Data in R",
     "section": "More From Me",
     "text": "More From Me\n\nA Kaggle Notebook describing this project: Kobe Bryant Notebook\nMy GitHub for this project: Kobe Bryant Repository"
+  },
+  {
+    "objectID": "projects/data-acquisition.html#good-webscraping-practice",
+    "href": "projects/data-acquisition.html#good-webscraping-practice",
+    "title": "Data Acquisition Project",
+    "section": "Good Webscraping Practice",
+    "text": "Good Webscraping Practice\nTo determine if it was ethical to scrape this page, I checked the robots.txt file for the BYU Athletics website, which stated that scraping all pages was allowed. It is important to check the wishes of the site owners before scraping data from their site.",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#height",
+    "href": "projects/data-acquisition.html#height",
+    "title": "Data Acquisition Project",
+    "section": "Height",
+    "text": "Height\nI created a function that split the Height entries on the “-” that distinguished feet and inches. It then multiplied the feet number by 12, and added the inches to that. It left me with an integer of inches for each player.",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#weight",
+    "href": "projects/data-acquisition.html#weight",
+    "title": "Data Acquisition Project",
+    "section": "Weight",
+    "text": "Weight\nHere, I just replaced ” lbs” with “” and then converted the number into an integer. Very simple!",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#class---class-and-rs",
+    "href": "projects/data-acquisition.html#class---class-and-rs",
+    "title": "Data Acquisition Project",
+    "section": "Class -> Class and RS",
+    "text": "Class -&gt; Class and RS\nFirst, to create the RS variable, I used the str.startswith() function to assign Yes to values that started with “RS -”, and No to those that didn’t.\nThen, to simplify the Class variable, I replaced “RS -” with ““, just like I did for the Weight variable above.",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#hometown---city-and-state",
+    "href": "projects/data-acquisition.html#hometown---city-and-state",
+    "title": "Data Acquisition Project",
+    "section": "Hometown -> City and State",
+    "text": "Hometown -&gt; City and State\nThis was very simple, I just split on the comma in each entry, essentially creating tuples on columns, then stripped the whitespace on both City and State. I then dropped the original Hometown variable.",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
+  },
+  {
+    "objectID": "projects/data-acquisition.html#reordered-columns",
+    "href": "projects/data-acquisition.html#reordered-columns",
+    "title": "Data Acquisition Project",
+    "section": "Reordered Columns",
+    "text": "Reordered Columns\nFinally, I reordered the columns so they were in a similar order as the original dataset. This was what the first few rows of my final dataset looked like:\n\nFinal Dataset\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNumber\nName\nPosition\nHeight\nWeight\nClass\nRS\nCity\nState\nPrevious\n\n\n\n\n0\n0\nEvan Johnson\nCornerback\n72\n185\nSenior\nYes\nMonterey\nCalifornia\nStevenson High School\n\n\n1\n0\nTei Nacua\nWide Receiver\n74\n185\nSophomore\nYes\nProvo\nUtah\nTimpview High School\n\n\n2\n1\nTherrian Alexander III\nCornerback\n74\n175\nJunior\nNo\nEllenwood\nGeorgia\nSouthwest Dekalb High School\n\n\n3\n2\nJonathan Kabeya\nCornerback\n70\n180\nSophomore\nYes\nEuless\nTexas\nByron Nelson High School\n\n\n4\n2\nRoger Saleapaga II\nTight End\n76\n235\nJunior\nNo\nOrem\nUtah\nOregon",
+    "crumbs": [
+      "Data Acquisition Project"
+    ]
   }
 ]
